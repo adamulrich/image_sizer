@@ -18,13 +18,26 @@ def main(args):
             #get the file name and extension, make sure everything is lower case
             f, e = os.path.splitext(item.lower())
             full_file_path = (os.path.join(path,item)).lower()
+
+            # check to see if it is a valid file and if it is a supported image type
             if os.path.isfile(full_file_path) and e in ['.jpg', '.png', '.gif', '.webp', '.bmp']:
+                
                 #hand file to resize
                 resize(full_file_path,args.width)            
 
     #if we are doing a file
     elif args.file != "":
-        resize(args.file,args.width)            
+
+        #get file        
+        item = args.file
+
+        #split the extension off
+        f, e = os.path.splitext(item.lower())
+
+        #check if it is a file and if it is a valid image extension
+        if os.path.isfile(item) and e in ['.jpg', '.png', '.gif', '.webp', '.bmp']:
+
+            resize(args.file,args.width)            
 
     #no good params
     else:
