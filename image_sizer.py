@@ -38,14 +38,24 @@ def resize(file, widths):
         #open file
         img = Image.open(file)
 
-        # $todo calculate height
+        # calculate height
         height = int(img.height * (width / img.width))
 
         img = img.resize((width ,height), Image.Resampling.LANCZOS)
         
         #generate save name and save, replacing spaces with underscores if needed.
-        f, e = os.path.splitext(file)
-        save_name = ''.join([f, "_", str(width), e]).lower().replace(" ","_")
+        # get the path and file name
+        path, file_name = os.path.split(file)
+        
+        # split off the file extension off the file name
+        file_name_no_ext, file_extension = os.path.splitext(file_name)
+
+        # make it lower case, and replace spaces
+        file_name_no_ext = file_name_no_ext.lower().replace(" ","_")
+
+        #put the path back together
+        full_path = os.path.join(path,file_name_no_ext)
+        save_name = ''.join([full_path, "_", str(width), file_extension])
            
         img.save(save_name) 
 
