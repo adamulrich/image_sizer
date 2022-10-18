@@ -135,7 +135,11 @@ def watermark_image_with_text(image: Image, watermark: str, color: str):
 
 if __name__ == "__main__":
 
-    parser = argparse.ArgumentParser(epilog= "EXAMPLE calls:\nimage_sizer.py -path c:\\github\\myproject\\images -width 300 600 900\nimage_sizer.py -file c:\\github\\myproject\\images\\foobar.jpg -width 400 800", 
+    parser = argparse.ArgumentParser(epilog= "\
+    EXAMPLE calls:\n\
+\
+        image_sizer.py -path c:\\github\\myproject\\images -width 300 600 900\n\
+        image_sizer.py -file c:\\github\\myproject\\images\\foobar.jpg -width 400 800 -watermark medium large -color blue", 
         formatter_class=CustomFormatter)
     parser.add_argument("-path", type=str, default="", help="path to directory of images to be resized.")
     parser.add_argument("-file", type=str, default ="", help="path to a single file to be resized.")
