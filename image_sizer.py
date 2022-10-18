@@ -110,7 +110,7 @@ def watermark_image_with_text(image: Image, watermark: str, color: str):
     font_family = 'fonts/arial.ttf'
     width, height = image.size
     draw = ImageDraw.Draw(imageWatermark)
-    font = ImageFont.truetype(font_family, int(height / 10))
+    font = ImageFont.truetype(font_family, int(height / 18))
 
     #set up location
     textWidth, textHeight = draw.textsize(watermark, font)
