@@ -1,5 +1,5 @@
 from PIL import Image, ImageDraw, ImageFont #pip install pillow
-import os
+import os, sys
 import argparse  #pip install argparse
 
 result_list = []
@@ -107,7 +107,7 @@ def watermark_image_with_text(image: Image, watermark: str, color: str):
     imageWatermark = Image.new("RGBA", image.size, (255, 255, 255, 0))
     
     #set up font
-    font_family = 'fonts/arial.ttf'
+    font_family = 'arial.ttf'
     width, height = image.size
     draw = ImageDraw.Draw(imageWatermark)
     font = ImageFont.truetype(font_family, int(height / 18))
@@ -134,6 +134,7 @@ def watermark_image_with_text(image: Image, watermark: str, color: str):
 
 
 if __name__ == "__main__":
+
     parser = argparse.ArgumentParser(epilog= "EXAMPLE calls:\nimage_sizer.py -path c:\\github\\myproject\\images -width 300 600 900\nimage_sizer.py -file c:\\github\\myproject\\images\\foobar.jpg -width 400 800", 
         formatter_class=CustomFormatter)
     parser.add_argument("-path", type=str, default="", help="path to directory of images to be resized.")
@@ -142,7 +143,10 @@ if __name__ == "__main__":
     parser.add_argument('-color',type=str, default="white", help="optional color name for the watermark(s). Defaults to white")
     parser.add_argument('-watermark', type=str, nargs="*", default = '',help="optional text string for watermarking images. If one value, it will be applied to all. if more than one, should be the same number as number of widths")
     
+    
+
     args = parser.parse_args()
+
     main(args)
     
 
